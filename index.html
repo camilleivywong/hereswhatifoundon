@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Here's what I found on</title>
+	<link rel="stylesheet" type="text/css">	
+</head>
+
+<style>
+
+body{
+	margin: 0;
+	font-family:helvetica, arial, roboto, sans-serif;
+	color: black;
+	background-color: white;
+	font-size: 30px;
+	background: white;
+	line-height:1.25em;
+	overflow: auto;
+	position: relative;
+}
+
+p{
+	margin-top: 0;
+	padding: 0px;
+	color: black;
+}
+
+a:link, a:link {
+text-decoration: none;
+color: black;
+border-bottom: 1px dotted blue;
+}
+
+a:visited{
+color:rgb(10, 57, 247);
+}
+
+a:hover{
+border-bottom: 1px solid blue;
+font-weight: bold;
+}
+
+#container{
+cursor: pointer;
+}
+
+
+</style>
+
+<body>
+	<span id = "container">Here's what I found on...</span>
+</body>
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">	
+
+$(document).ready(function(){
+
+var firstElement;
+var array;
+var index = 0;
+
+var request = new XMLHttpRequest();
+
+request.onload = function(){
+
+	array = JSON.parse(request.responseText);
+
+	firstElement = array[0];
+
+	$("#container").val(firstElement.title);
+	};
+
+	request.open('GET', 'SearchResults.json', true);
+	request.send(null);
+	
+
+	$("#container").click(function (item){
+
+		$("html").css({'cursor' : 'wait'});
+
+		var strArray = Object.keys(array);
+		var randomNum = Math.random();
+		var i = Math.floor(randomNum*strArray.length)
+
+		var randomKey = strArray[i];
+		var randomValue = array[randomKey].title
+
+		$("html").css({'cursor' : 'pointer'});
+		
+		document.getElementById("container").innerHTML += " Here's what I found on " + '<a href ="#">' + randomValue + '</a>'	
+
+		})
+		
+	});
+	
+
+
+</script>
+</html>

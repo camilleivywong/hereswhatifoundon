@@ -1,0 +1,29 @@
+/* Global styles ------------------------------------*/
+html{
+
+}
+
+body{
+	margin: 0;
+	font-family:helvetica, arial, roboto, sans-serif;
+	color: black;
+	background-color: white;
+	font-size: 30px;
+	background: white;
+}
+
+p{
+	margin-top: 0;
+	padding: 0px;
+	color: black;
+}
+
+a:link, a:link, a:visited {
+text-decoration: none;
+color: black;
+border-bottom: 1px dotted blue;
+}
+
+a:hover, a:hover {
+border-bottom: 1px solid blue;
+}
